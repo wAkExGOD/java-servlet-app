@@ -22,5 +22,13 @@
 <!--        <location>/WEB-INF/views/error.jsp</location>-->
 <!--    </error-page>-->
 
+    <filter>
+        <filter-name>SignUpValidationFilter</filter-name>
+        <filter-class>org.example.demo.filter.SignUpValidationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SignUpValidationFilter</filter-name>
+        <url-pattern>/signup</url-pattern>
+    </filter-mapping>
 
 </web-app>
