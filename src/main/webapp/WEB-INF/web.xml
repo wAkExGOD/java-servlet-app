@@ -31,4 +31,13 @@
         <url-pattern>/signup</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>LoginValidationFilter</filter-name>
+        <filter-class>org.example.demo.filter.LoginValidationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginValidationFilter</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
+
 </web-app>

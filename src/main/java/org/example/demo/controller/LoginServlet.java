@@ -28,7 +28,7 @@ public class LoginServlet extends BaseServlet {
             response.sendRedirect("profile");
         } else {
             request.setAttribute("error", "Неверные учетные данные");
-            renderPage(request, response, "логин", "/WEB-INF/views/login.jsp");
+            renderPage(request, response, "Логин", "/WEB-INF/views/login.jsp");
         }
     }
 }
