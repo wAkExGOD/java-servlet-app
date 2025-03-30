@@ -11,6 +11,7 @@ public class DBConnection {
     public static Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+
             return DriverManager.getConnection(
                     DBConfig.get("db.url"),
                     DBConfig.get("db.username"),

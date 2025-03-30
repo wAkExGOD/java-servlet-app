@@ -13,9 +13,9 @@ public class ConfirmEmailServlet extends HttpServlet {
     private AuthService authService = new AuthService();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String token = req.getParameter("token");
+
         if (token == null) {
             resp.sendRedirect("error.jsp");
             return;

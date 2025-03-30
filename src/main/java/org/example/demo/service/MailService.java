@@ -18,8 +18,7 @@ public class MailService {
         String subject = "Подтверждение регистрации";
 
         String link = "http://localhost:8080/confirm?token=" + token;
-        String body = "Здравствуйте!\n" +
-                "Перейдите по ссылке, чтобы подтвердить регистрацию: " + link;
+        String body = "Здравствуйте!\n" + "Перейдите по ссылке, чтобы подтвердить регистрацию: " + link;
         sendEmail(toEmail, subject, body);
     }
 

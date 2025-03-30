@@ -29,7 +29,6 @@ public class SignUpServlet extends BaseServlet {
             e.printStackTrace();
             req.setAttribute("error", e.getMessage());
             renderPage(req, resp, "Регистрация", "/WEB-INF/views/signup.jsp");
-
         }
     }
 }

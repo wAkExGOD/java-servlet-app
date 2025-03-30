@@ -16,21 +16,23 @@ public class AuthService {
 
     public User authenticate(String login, String password) {
         User user = userDAO.getUserBylogin(login);
+
         if (user != null && BCrypt.checkpw(password, user.getPassword())) {
             return user;
         }
+
         return null;
     }
 
-    public void register(String login,String rawPassword ,String email) throws SQLException, MessagingException, UnsupportedEncodingException {
+    public void register(String login, String rawPassword, String email) throws SQLException, MessagingException, UnsupportedEncodingException {
         User emailExisting = userDAO.getUserByEmail(email);
         User loginExisting = userDAO.getUserBylogin(login);
 
         if (emailExisting != null) {
-            throw new SQLException("Пользователь с таким email уже существует");
+            throw new SQLException("Пользователь с такой эл. почтой уже существует");
         }
         if (loginExisting != null) {
-            throw new SQLException("Пользователь с таким login уже существует");
+            throw new SQLException("Пользователь с таким логином уже существует");
         }
 
         String hashedPassword = BCrypt.hashpw(rawPassword, BCrypt.gensalt());
@@ -50,6 +52,7 @@ public class AuthService {
             userDAO.activateUser(user.getId());
             return true;
         }
+
         return false;
     }
 

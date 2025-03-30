@@ -18,8 +18,8 @@
                     Object user = session.getAttribute("user");
                     if (user == null) {
                 %>
-                <li class="header__menu-item"> <a class="header__menu-link" href="login">log in</a></li>
-                <li class="header__menu-item"> <a class="header__menu-link" href="signup">sign up</a></li>
+                <li class="header__menu-item"> <a class="header__menu-link" href="login">Логин</a></li>
+                <li class="header__menu-item"> <a class="header__menu-link" href="signup">Регистрация</a></li>
                 <%
                 } else {
                 %>
@@ -29,19 +29,15 @@
                     }
                 %>
                 <li class="header__menu-item"> <a class="header__menu-link" href="number">Передача числа</a> </li>
-
             </ul>
-
         </nav>
-
     </header>
     <main>
     <jsp:include page="${contentPage}" />
     </main>
     <footer>
         <p class="footer__text">
-            2025 <br>
-            футер для галочки
+            2025<br>Footer
         </p>
     </footer>
 </body>

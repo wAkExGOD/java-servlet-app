@@ -8,7 +8,7 @@
   }
 %>
 
-<p>welcome <%= user.getLogin() %></p>
+<p>Привет, <%= user.getLogin() %></p>
 <a href="logout">Выйти</a>
 
 

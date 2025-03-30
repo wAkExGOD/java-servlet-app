@@ -14,7 +14,7 @@ main {
 footer {
     flex-shrink: 0;
 }
-header{
+header {
     display: flex;
     justify-content: space-around;
     padding: 0.25em 0;
@@ -31,20 +31,20 @@ header::after {
     height: 1px;
     background: rgba(211, 211, 211, 0.7);;
 }
-header p{
+header p {
     margin: 0;
     padding: 0;
 }
-.header__logo{
+.header__logo {
     color: gold;
     font-size: 2em;
 }
-.header__menu-list{
+.header__menu-list {
     list-style: none;
     display: flex;
     gap: 1em;
 }
-.header__menu-link{
+.header__menu-link {
     text-decoration: none;
     color: black;
     font-size: 1em;
@@ -53,16 +53,16 @@ header p{
     color: gold;
     font-weight: bold;
 }
-.header__menu-link:hover{
+.header__menu-link:hover {
     color: #156;
     font-weight: bold;
 }
-.footer__text{
+.footer__text {
     border-top: dimgrey 1px;
     font-size: 1em;
     text-align: center;
 }
-footer{
+footer {
     position: relative;
 }
 footer::before {
