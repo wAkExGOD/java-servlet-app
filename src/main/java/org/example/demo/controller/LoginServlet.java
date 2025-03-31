@@ -12,11 +12,13 @@ import java.io.IOException;
 public class LoginServlet extends BaseServlet {
     private AuthService authService = new AuthService();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         renderPage(request, response, "Логин", "/WEB-INF/views/login.jsp");
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
@@ -25,6 +27,7 @@ public class LoginServlet extends BaseServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            session.setAttribute("userId", user.getId());
             response.sendRedirect("profile");
         } else {
             request.setAttribute("error", "Неверные учетные данные");
