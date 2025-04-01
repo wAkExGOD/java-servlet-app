@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>${pageTitle}</title>
-    <link rel="stylesheet" href="../../styles/layout.css">
-    <script src="../../js/main.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/layout.css">
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </head>
 <body>
     <header>
