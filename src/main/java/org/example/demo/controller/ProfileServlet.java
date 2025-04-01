@@ -10,7 +10,6 @@ import java.io.IOException;
 public class ProfileServlet extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-
         if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect("login");
             return;

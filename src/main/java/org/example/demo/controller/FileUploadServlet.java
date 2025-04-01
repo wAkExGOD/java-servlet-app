@@ -18,7 +18,7 @@ import java.io.IOException;
         maxFileSize = 1024 * 1024 * 10, // 10 MB
         maxRequestSize = 1024 * 1024 * 15 // 15 MB
 )
-public class FileUploadServlet extends HttpServlet {
+public class FileUploadServlet extends BaseServlet {
     private static final Logger logger = LogManager.getLogger(FileUploadServlet.class);
     private FileService fileService;
 

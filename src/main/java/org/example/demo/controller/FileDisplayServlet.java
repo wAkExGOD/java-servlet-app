@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 @WebServlet("/uploads/*")
-public class FileDisplayServlet extends HttpServlet {
+public class FileDisplayServlet extends BaseServlet {
     private static final Logger logger = LogManager.getLogger(FileDisplayServlet.class);
     private FileService fileService;
 

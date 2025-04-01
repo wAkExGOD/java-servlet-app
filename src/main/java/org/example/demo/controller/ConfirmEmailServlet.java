@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/confirm")
-public class ConfirmEmailServlet extends HttpServlet {
+public class ConfirmEmailServlet extends BaseServlet {
     private static final Logger logger = LogManager.getLogger(ConfirmEmailServlet.class);
     private AuthService authService = new AuthService();
 

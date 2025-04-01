@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.demo.controller.BaseServlet;
 import org.example.demo.controller.NumberServlet;
+import static org.example.demo.controller.BaseServlet.renderPage;
 
 import java.io.IOException;
 
@@ -36,7 +37,7 @@ public class LoginValidationFilter implements Filter {
 
             if (errorMessage != null) {
                 httpRequest.setAttribute("error", errorMessage);
-                BaseServlet.renderPage(httpRequest, httpResponse, "Логин", "/WEB-INF/views/login.jsp");
+                renderPage(httpRequest, httpResponse, "Логин", "/WEB-INF/views/login.jsp");
                 return;
             }
         }
