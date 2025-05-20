@@ -22,9 +22,10 @@ public class PostsServlet extends BaseServlet {
             return;
         }
 
+        Integer userId = (Integer) request.getSession().getAttribute("userId");
         List<Post> posts;
         try {
-            posts = postService.getAllPosts();
+            posts = postService.getAllPosts(userId);
             request.setAttribute("posts", posts);
             renderPage(request, response, "Посты", "/WEB-INF/views/posts.jsp");
         } catch (SQLException e) {

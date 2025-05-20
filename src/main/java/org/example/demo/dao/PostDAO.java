@@ -36,14 +36,29 @@ public class PostDAO {
         return null;
     }
 
-    public List<Post> getAllPosts() throws SQLException {
+//    public List<Post> getAllPosts() throws SQLException {
+//        List<Post> posts = new ArrayList<>();
+//        String sql = "SELECT * FROM post";
+//        try (Connection conn = DBConnection.getConnection();
+//             PreparedStatement stmt = conn.prepareStatement(sql);
+//             ResultSet rs = stmt.executeQuery()) {
+//            while (rs.next()) {
+//                posts.add(parsePostFromDB(rs));
+//            }
+//        }
+//        return posts;
+//    }
+
+    public List<Post> getAllPosts(int authorId) throws SQLException {
         List<Post> posts = new ArrayList<>();
-        String sql = "SELECT * FROM post";
+        String sql = "SELECT * FROM post WHERE author_id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            while (rs.next()) {
-                posts.add(parsePostFromDB(rs));
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, authorId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    posts.add(parsePostFromDB(rs));
+                }
             }
         }
         return posts;

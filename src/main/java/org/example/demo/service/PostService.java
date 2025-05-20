@@ -38,9 +38,9 @@ public class PostService {
         }
     }
 
-    public List<Post> getAllPosts() throws SQLException {
+    public List<Post> getAllPosts(int authorId) throws SQLException {
         try {
-            List<Post> posts = postDAO.getAllPosts();
+            List<Post> posts = postDAO.getAllPosts(authorId);
             logger.info("Retrieved all posts, count: {}", posts != null ? posts.size() : 0);
             return posts;
         } catch (SQLException e) {
