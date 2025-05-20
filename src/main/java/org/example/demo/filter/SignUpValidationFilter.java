@@ -4,12 +4,16 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.demo.controller.BaseServlet;
 
 import java.io.IOException;
 
 @WebFilter("/signup")
 public class SignUpValidationFilter implements Filter {
+    private static final Logger logger = LogManager.getLogger(SignUpValidationFilter.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {}
 
@@ -31,6 +35,8 @@ public class SignUpValidationFilter implements Filter {
             } else if (email == null || !email.matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
                 errorMessage = "Некорректный адрес электронной почты.";
             }
+
+            logger.info("Ошибка: {}", errorMessage);
 
             if (errorMessage != null) {
                 httpRequest.setAttribute("error", errorMessage);
