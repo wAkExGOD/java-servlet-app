@@ -24,6 +24,13 @@ public class LoginServlet extends BaseServlet {
 
         User user = authService.authenticate(login, password);
 
+        // Пример использования Cookie (сеттим):
+        Cookie testCookie = new Cookie("test", "123456");
+        testCookie.setMaxAge(60 * 60 * 24 * 30); // 30 дней
+        testCookie.setHttpOnly(true);
+        testCookie.setPath("/");
+        response.addCookie(testCookie);
+
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);

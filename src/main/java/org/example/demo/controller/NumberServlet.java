@@ -15,6 +15,18 @@ public class NumberServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Пример использования Cookie (получаем):
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("test")) {
+                    logger.info("Читаем Cookie test {}", cookie.getValue());
+                }
+            }
+        } else {
+            response.getWriter().println("No cookies found.");
+        }
+
         renderPage(request, response, "Передача числа", "/WEB-INF/views/number.jsp");
     }
 
