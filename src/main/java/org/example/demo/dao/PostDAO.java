@@ -36,25 +36,14 @@ public class PostDAO {
         return null;
     }
 
-//    public List<Post> getAllPosts() throws SQLException {
-//        List<Post> posts = new ArrayList<>();
-//        String sql = "SELECT * FROM post";
-//        try (Connection conn = DBConnection.getConnection();
-//             PreparedStatement stmt = conn.prepareStatement(sql);
-//             ResultSet rs = stmt.executeQuery()) {
-//            while (rs.next()) {
-//                posts.add(parsePostFromDB(rs));
-//            }
-//        }
-//        return posts;
-//    }
-
-    public List<Post> getAllPosts(int authorId) throws SQLException {
+    public List<Post> getAllPosts(int authorId, int offset, int limit) throws SQLException {
         List<Post> posts = new ArrayList<>();
-        String sql = "SELECT * FROM post WHERE author_id = ?";
+        String sql = "SELECT * FROM post WHERE author_id = ? LIMIT ? OFFSET ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, authorId);
+            stmt.setInt(2, limit);
+            stmt.setInt(3, offset);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     posts.add(parsePostFromDB(rs));
@@ -62,6 +51,20 @@ public class PostDAO {
             }
         }
         return posts;
+    }
+
+    public int getTotalPosts(int authorId) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM post WHERE author_id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, authorId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        }
+        return 0;
     }
 
     public void updatePost(Post post) throws SQLException {

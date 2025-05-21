@@ -444,6 +444,24 @@ label {
     display: inline; /* Чтобы кнопка была на одной линии с кнопкой редактирования */
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pagination a {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background: #f0f0f0;
+}
+
 
 
 /* Edit Post Page Styles */

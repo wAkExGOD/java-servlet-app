@@ -24,9 +24,27 @@ public class PostsServlet extends BaseServlet {
 
         Integer userId = (Integer) request.getSession().getAttribute("userId");
         List<Post> posts;
+        int page = 1; // Начальная страница
+        int pageSize = 5; // Количество постов на странице
+
+        String pageParam = request.getParameter("page");
+        if (pageParam != null) {
+            try {
+                page = Integer.parseInt(pageParam);
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+        }
+
         try {
-            posts = postService.getAllPosts(userId);
+            posts = postService.getAllPosts(userId, page, pageSize);
+
+            int totalPosts = postService.getTotalPosts(userId);
             request.setAttribute("posts", posts);
+            request.setAttribute("currentPage", page);
+            request.setAttribute("pageSize", pageSize);
+            request.setAttribute("totalPosts", totalPosts);
+
             renderPage(request, response, "Посты", "/WEB-INF/views/posts.jsp");
         } catch (SQLException e) {
             request.setAttribute("error", "Ошибка при получении постов");

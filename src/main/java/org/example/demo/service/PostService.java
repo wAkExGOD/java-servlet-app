@@ -38,13 +38,23 @@ public class PostService {
         }
     }
 
-    public List<Post> getAllPosts(int authorId) throws SQLException {
+    public List<Post> getAllPosts(int authorId, int page, int pageSize) throws SQLException {
         try {
-            List<Post> posts = postDAO.getAllPosts(authorId);
+            int offset = (page - 1) * pageSize;
+            List<Post> posts = postDAO.getAllPosts(authorId, offset, pageSize);
             logger.info("Retrieved all posts, count: {}", posts != null ? posts.size() : 0);
             return posts;
         } catch (SQLException e) {
             logger.error("Error retrieving all posts", e);
+            throw e;
+        }
+    }
+
+    public int getTotalPosts(int authorId) throws SQLException {
+        try {
+            return postDAO.getTotalPosts(authorId);
+        } catch (SQLException e) {
+            logger.error("Error retrieving total posts for author ID: {}", authorId, e);
             throw e;
         }
     }

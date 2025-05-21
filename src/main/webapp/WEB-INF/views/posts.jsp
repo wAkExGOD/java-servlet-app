@@ -58,5 +58,21 @@
         }
       %>
     </ul>
+    <div class="pagination">
+      <%
+        int totalPosts = (Integer) request.getAttribute("totalPosts");
+        int pageSize = (Integer) request.getAttribute("pageSize");
+        int currentPage = (Integer) request.getAttribute("currentPage");
+        int totalPages = (int) Math.ceil((double) totalPosts / pageSize);
+
+        for (int i = 1; i <= totalPages; i++) {
+      %>
+      <a href="${pageContext.request.contextPath}/posts?page=<%= i %>" class="<%= (i == currentPage) ? "active" : "" %>">
+        <%= i %>
+      </a>
+      <%
+        }
+      %>
+    </div>
   </div>
 </div>
